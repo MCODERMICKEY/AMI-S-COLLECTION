@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ami's Collection — Ladies Wear</title>
+<meta name="description" content="Ami's Collection — trendy ladies wear, quality fabrics, affordable prices. Nationwide delivery across Ghana." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<script>
+  // Runs immediately as the body starts parsing, before anything renders,
+  // so returning visitors never see a flash of the wrong theme.
+  try {
+    if (localStorage.getItem("amis-theme") === "light") {
+      document.body.classList.add("light-theme");
+    }
+  } catch (e) {}
+</script>
+
+<!-- ============ TOP BAR (mirrors reference screenshot) ============ -->
+<header class="topbar">
+  <div class="brand-mark">
+    <svg class="crown-badge" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 34L5 16l9 7 10-13 10 13 9-7-3 18H8z" stroke="#8C6C2E" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="24" cy="8" r="2.4" fill="#8C6C2E"/>
+    </svg>
+    <span>Ami's Collection</span>
+  </div>
+
+  <button class="catalog-pill" id="scrollToCatalog" type="button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    Catalog
+  </button>
+
+  <div class="topbar-actions">
+    <button class="icon-btn dark" id="searchToggle" aria-label="Search catalogue" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </button>
+    <button class="icon-btn dark" id="menuToggle" aria-label="Open menu" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ SEARCH BAR (collapsible) ============ -->
+<div class="search-bar" id="searchBar">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+  <input type="text" id="searchInput" placeholder="Search dresses, jumpsuits, sets…" autocomplete="off" />
+</div>
+
+<!-- ============ SLIM BRAND STRIP ============ -->
+<section class="brand-strip">
+  <span class="eyebrow">Deals with all kinds of</span>
+  <h1><span class="script">Ladies Wear</span></h1>
+  <p class="hero-tagline">Style <i></i> Class <i></i> Confidence</p>
+  <p class="hero-desc">Step into style that speaks before you do. Nationwide delivery — anywhere in the country.</p>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<main class="catalog" id="catalog">
+  <button class="filters-toggle" id="filtersToggle" type="button">
+    FILTERS
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+
+  <div class="product-grid" id="productGrid"><!-- injected by script.js --></div>
+</main>
+
+<!-- ============ DELIVERY STRIP ============ -->
+<div class="delivery">
+  <div class="delivery-copy">
+    <div class="delivery-icon">🚚</div>
+    <div>
+      <h3>We do <span>Nationwide Delivery</span></h3>
+      <p>We deliver fashion &amp; confidence to your doorstep, anywhere in the country.</p>
+    </div>
+  </div>
+  <a class="btn btn-gold" href="tel:+233537541183">Place an Order</a>
+</div>
+
+<footer>
+  For every occasion · Look good, feel great · Be you, be beautiful<br>
+  <strong>@amiscollection_gh</strong> · 053 754 1183 · © 2026 Ami's Collection
+</footer>
+
+<!-- ============ STICKY MOBILE CONTACT ============ -->
+<div class="sticky-contact">
+  <a class="btn btn-outline" href="tel:+233537541183">📞 Call</a>
+  <a class="btn btn-gold" id="stickyWhatsapp" href="#">💬 WhatsApp</a>
+</div>
+
+<!-- ============ HAMBURGER MENU PANEL (mirrors reference) ============ -->
+<div class="overlay" id="menuOverlay">
+  <div class="panel menu-panel" role="dialog" aria-label="Menu">
+    <div class="panel-topbar">
+      <button class="icon-btn dark" id="themeToggle" type="button" aria-label="Toggle light / dark background" aria-pressed="false">
+        <svg id="themeIconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg id="themeIconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="icon-btn dark" id="menuClose" type="button" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="panel-brand">
+      <svg class="crown-badge" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 34L5 16l9 7 10-13 10 13 9-7-3 18H8z" stroke="#C9A15A" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="24" cy="8" r="2.4" fill="#C9A15A"/>
+      </svg>
+      <span>Ami's Collection</span>
+    </div>
+    <hr class="divider" />
+
+    <nav class="panel-nav">
+      <a href="#catalog" class="menu-link-close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Catalog
+      </a>
+      <a href="#about" class="menu-link-close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+        About
+      </a>
+      <a href="#contact" class="menu-link-close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 4.9 2.3c-.9.7-1.5 1.2-1.5 2.4M12 17h.01"/></svg>
+        Support
+      </a>
+    </nav>
+
+    <div class="panel-footer">
+      <div class="panel-legal">
+        <a href="#">Terms Of Use</a>
+        <a href="#">Privacy</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="social-col">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="TikTok">tt</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FILTER PANEL (mirrors reference "Shop by") ============ -->
+<div class="overlay" id="filterOverlay">
+  <div class="panel filter-panel" role="dialog" aria-label="Shop by filters">
+    <div class="panel-topbar">
+      <span class="shop-by-label">Shop by</span>
+      <button class="icon-btn dark" id="filterClose" type="button" aria-label="Close filters">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="filter-scroll">
+      <div class="filter-section">
+        <h4>Categories</h4>
+        <hr class="divider" />
+        <div class="check-list" id="categoryChecks"><!-- injected --></div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Occasion</h4>
+        <hr class="divider" />
+        <div class="check-list" id="occasionChecks"><!-- injected --></div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Price Range</h4>
+        <hr class="divider" />
+        <p class="price-readout" id="priceReadout">GHS 100 – GHS 1000</p>
+        <div class="range-slider">
+          <input type="range" id="priceMin" min="100" max="1000" step="10" value="100" />
+          <input type="range" id="priceMax" min="100" max="1000" step="10" value="1000" />
+          <div class="range-track"></div>
+          <div class="range-fill" id="rangeFill"></div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Item Condition</h4>
+        <hr class="divider" />
+        <div class="check-list" id="conditionChecks"><!-- injected --></div>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="btn btn-outline" id="filterReset" type="button">Reset</button>
+      <button class="btn btn-gold" id="filterApply" type="button">Show Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT DETAIL PANEL ("read more") ============ -->
+<div class="overlay" id="productOverlay">
+  <div class="panel product-detail-panel" role="dialog" aria-label="Item details">
+    <div class="panel-topbar">
+      <span class="shop-by-label">Item Details</span>
+      <button class="icon-btn dark" id="detailClose" type="button" aria-label="Close item details">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="detail-scroll">
+      <div class="detail-media" id="detailMedia"></div>
+
+      <h3 class="detail-name" id="detailName"></h3>
+      <div class="detail-price" id="detailPrice"></div>
+      <div class="detail-tags" id="detailTags"></div>
+
+      <div class="detail-size-wrap" id="detailSizeWrap">
+        <h4 class="detail-size-label">Select Size</h4>
+        <div class="size-list" id="detailSizes"></div>
+      </div>
+
+      <div class="detail-color-wrap" id="detailColorWrap">
+        <h4 class="detail-size-label">Select Color</h4>
+        <div class="color-list" id="detailColors"></div>
+        <p class="color-readout" id="colorReadout"></p>
+      </div>
+
+      <p class="detail-desc" id="detailDesc"></p>
+    </div>
+
+    <div class="filter-actions">
+      <a class="btn btn-outline" id="detailCall" href="tel:+233537541183">📞 Call</a>
+      <button class="btn btn-gold" id="detailWhatsapp" type="button">💬 Order on WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
