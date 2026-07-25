@@ -1,0 +1,21 @@
+{
+  "name": "amis-collection",
+  "version": "1.0.0",
+  "description": "Ami's Collection - Ladies Wear E-commerce",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "fashion",
+    "ecommerce",
+    "ladies-wear"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
